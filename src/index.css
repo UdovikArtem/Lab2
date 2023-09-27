@@ -668,6 +668,7 @@ caption {
   border-color: rgb(131, 2, 2);
   color: rgb(255, 0, 0);
   text-align: center;
+  font: normal normal normal 1rem/1.6 -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 /* Navigation
   =============== */
