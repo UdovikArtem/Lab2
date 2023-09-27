@@ -4,7 +4,10 @@ class Form extends Component {
     constructor(props) {
         super(props);
         
+        let id = 1;
+
         this.initialState = {
+            id: id,
             firstName: '',
             lastName: '',
             email: ''
@@ -23,9 +26,11 @@ class Form extends Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
+        if(!Object.values(this.state).includes('')){
+            this.props.handleSubmit(this.state);
+            this.initialState.id++;
+            this.setState(this.initialState);
+        }
     }
 
     render() {
