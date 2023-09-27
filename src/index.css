@@ -661,6 +661,14 @@ caption {
   .contain-table {
     width: 100%; } }
 
+.error {
+  border-width: 1mm;
+  border-radius: 10px;
+  border-style: ridge;
+  border-color: rgb(131, 2, 2);
+  color: rgb(255, 0, 0);
+  text-align: center;
+}
 /* Navigation
   =============== */
 /* Layout

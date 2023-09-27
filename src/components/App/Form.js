@@ -4,10 +4,10 @@ class Form extends Component {
     constructor(props) {
         super(props);
         
-        let id = 1;
+        this.hidden = false;
 
         this.initialState = {
-            id: id,
+            id: 1,
             firstName: '',
             lastName: '',
             email: ''
@@ -26,18 +26,29 @@ class Form extends Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
+        
         if(!Object.values(this.state).includes('')){
             this.props.handleSubmit(this.state);
             this.initialState.id++;
             this.setState(this.initialState);
+            this.hidden = false;
         }
+        else{
+            this.setState(this.state);
+            this.hidden = true;
+        }
+        console.log(this.hidden) 
     }
 
     render() {
         const { firstName, lastName, email } = this.state; 
-
         return (
             <form onSubmit={this.onFormSubmit}>
+                {this.hidden ? (<div class='error'>
+                    You hadn't wrote your first name, last name or email!
+                    Please, write and try again.
+                </div>)
+                : <div></div>}
                 <label for="firstName">First Name</label>
                 <input 
                     type="text" 
@@ -62,6 +73,7 @@ class Form extends Component {
                 <button type="add user">
                     Add User
                 </button>
+                
             </form>
         );
     }
