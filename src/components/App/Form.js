@@ -37,18 +37,12 @@ class Form extends Component {
             this.setState(this.state);
             this.hidden = true;
         }
-        console.log(this.hidden) 
     }
 
     render() {
         const { firstName, lastName, email } = this.state; 
         return (
             <form onSubmit={this.onFormSubmit}>
-                {this.hidden ? (<div class='error'>
-                    You hadn't wrote your first name, last name or email!
-                    Please, write and try again.
-                </div>)
-                : <div></div>}
                 <label for="firstName">First Name</label>
                 <input 
                     type="text" 
@@ -70,6 +64,11 @@ class Form extends Component {
                     id="email"
                     value={email} 
                     onChange={this.handleChange} />
+                {this.hidden ? (<div class='error'>
+                    You hadn't wrote your first name, last name or email!
+                    Please, write and try again.
+                </div>)
+                : <div></div>}
                 <button type="add user">
                     Add User
                 </button>
