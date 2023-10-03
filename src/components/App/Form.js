@@ -69,7 +69,7 @@ class Form extends Component {
                     Please, write and try again.
                 </div>)
                 : <div></div>}
-                <button type="add user">
+                <button type="submit">
                     Add User
                 </button>
                 
