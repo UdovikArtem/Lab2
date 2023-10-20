@@ -14,7 +14,7 @@ const TableHeader = () => {
     );
 }
 
-const TableBody = props => { 
+const TableBody = props => {
     const rows = props.characterData.map((row, index) => {
         return (
             <tr key={index}>
@@ -31,12 +31,16 @@ const TableBody = props => {
 }
 
 const Table = (props) => {
-    const { characterData, removeCharacter } = props;
+    const { characterData, removeCharacter} = props;
+    console.log(props)
         return (
-            <table>
-                <TableHeader />
-                <TableBody characterData={characterData} removeCharacter={removeCharacter} />
-            </table>
+            <div class='table'>
+                <table>
+                    <TableHeader />
+                    <TableBody characterData={characterData} removeCharacter={removeCharacter} />
+                </table>
+                <button onClick={props.logOut}>Log Out</button>
+            </div>
         );
 }
 

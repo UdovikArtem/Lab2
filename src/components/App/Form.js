@@ -5,12 +5,13 @@ class Form extends Component {
         super(props);
         
         this.hidden = false;
-
+        
         this.initialState = {
-            id: 1,
+            id: props.characterLastId,
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
+            password: ''
         };
 
         this.state = this.initialState;
@@ -26,12 +27,12 @@ class Form extends Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        
         if(!Object.values(this.state).includes('')){
             this.props.handleSubmit(this.state);
             this.initialState.id++;
             this.setState(this.initialState);
             this.hidden = false;
+            window.location.assign(window.location.toString().replace('form', 'login'))
         }
         else{
             this.setState(this.state);
@@ -40,8 +41,10 @@ class Form extends Component {
     }
 
     render() {
-        const { firstName, lastName, email } = this.state; 
+        const { firstName, lastName, email, password } = this.state; 
         return (
+            <div class='form'>
+                <h3>Add user</h3>
             <form onSubmit={this.onFormSubmit}>
                 <label for="firstName">First Name</label>
                 <input 
@@ -64,16 +67,24 @@ class Form extends Component {
                     id="email"
                     value={email} 
                     onChange={this.handleChange} />
+                <label for="password">Password</label>
+                <input
+                    type='password'
+                    name='password'
+                    id='password'
+                    value={password}
+                    onChange={this.handleChange}>
+                </input>
                 {this.hidden ? (<div class='error'>
                     You hadn't wrote your first name, last name or email!
                     Please, write and try again.
                 </div>)
                 : <div></div>}
-                <button type="submit">
-                    Add User
-                </button>
-                
+                    <button type="add user">
+                        Add User
+                    </button>  
             </form>
+            </div>
         );
     }
 }
