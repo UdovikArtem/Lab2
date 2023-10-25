@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import { Navigate } from 'react-router-dom';
 
 class Form extends Component {
     constructor(props) {
         super(props);
         
         this.hidden = false;
-        
+        this.isNewUser = false;
         this.initialState = {
             id: props.characterLastId,
             firstName: '',
@@ -32,7 +33,7 @@ class Form extends Component {
             this.initialState.id++;
             this.setState(this.initialState);
             this.hidden = false;
-            window.location.assign(window.location.toString().replace('form', 'login'))
+            this.isNewUser = true;
         }
         else{
             this.setState(this.state);
@@ -44,6 +45,7 @@ class Form extends Component {
         const { firstName, lastName, email, password } = this.state; 
         return (
             <div class='form'>
+                {this.isNewUser && (<Navigate to="/login" replace={true} />)}
                 <h3>Add user</h3>
             <form onSubmit={this.onFormSubmit}>
                 <label for="firstName">First Name</label>
@@ -79,7 +81,8 @@ class Form extends Component {
                     You hadn't wrote your first name, last name or email!
                     Please, write and try again.
                 </div>)
-                : <div></div>}
+                : (<div></div>)}
+                {this.isNewUser && (<Navigate to="/login" replace={true} />)}
                     <button type="add user">
                         Add User
                     </button>  
