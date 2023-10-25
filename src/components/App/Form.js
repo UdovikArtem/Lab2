@@ -82,7 +82,6 @@ class Form extends Component {
                     Please, write and try again.
                 </div>)
                 : (<div></div>)}
-                {this.isNewUser && (<Navigate to="/login" replace={true} />)}
                     <button type="add user">
                         Add User
                     </button>  
